@@ -4,12 +4,14 @@
         cy.contains('Talking About Testing').should('be.visible')
     })
 
-    // Cypress._.times(5, function() {
-    //     it.only('Testar a página de política de privacidade de forma independente', function(){
-    //         cy.visit('./src/privacy.html')
-    //         cy.contains('Talking About Testing').should('be.visible')
-    //     })
-    // })
+    //lodash
+    Cypress._.times(5, function() {
+        // executa o N vezes
+        it.only('Testar a página de política de privacidade de forma independente', function(){
+            cy.visit('./src/privacy.html')
+            cy.contains('Talking About Testing').should('be.visible')
+        })
+    })
     // it('exibe e esconde as mensagens de sucesso e erro usando o .invoke', () => {
     //     cy.get('.success')
     //       .should('not.be.visible')

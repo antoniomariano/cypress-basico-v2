@@ -177,4 +177,13 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('.error').should('not.be.visible')
     })
 
+    Cypress._.times(5, function() {
+        // executa o N vezes
+        it.only('Testar a página de política de privacidade de forma independente', function(){
+            cy.get('#firstName').type('Antonio')
+            cy.get('#lastName').type('Mariano')
+            cy.get('#email').type('lobinhomail@gmail.com')
+            cy.get('#phone-checkbox').check()
+        })
+    })
   })
