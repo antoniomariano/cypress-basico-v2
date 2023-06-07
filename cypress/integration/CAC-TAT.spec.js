@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 describe('Central de Atendimento ao Cliente TAT', function() {
+    const THREE_SECONDS_IN_MS = 3000
     beforeEach(function (){ //antes que ... executa algo...
         cy.visit('./src/index.html')
     })
@@ -163,4 +164,17 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.contains('Talking About Testing').should('be.visible')//verifica se contem o texto na pagina
         
     })
+    it('exibe a mensagem por 5 segundos', function(){
+        cy.clock()//congela o relogio do navegador
+        cy.get('#firstName').type('Antonio')
+        cy.get('#lastName').type('Mariano')
+        cy.get('#email').type('lobinhomail@gmail.com')
+        cy.get('#phone-checkbox').check()
+        cy.get('#open-text-area').type("teste", {delay: 7})
+        cy.contains('button', 'Enviar').click()
+        cy.get('.error').should('be.visible')
+        cy.tick(THREE_SECONDS_IN_MS) // variavel setada do tempo
+        cy.get('.error').should('not.be.visible')
+    })
+
   })
