@@ -176,7 +176,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.tick(THREE_SECONDS_IN_MS) // variavel setada do tempo
         cy.get('.error').should('not.be.visible')
     })
-
+    //lodash
     Cypress._.times(5, function() {
         // executa o N vezes
         it.only('Testar a página de política de privacidade de forma independente', function(){
