@@ -179,7 +179,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     //lodash
     Cypress._.times(5, function() {
         // executa o N vezes
-        it.only('Testar a página de política de privacidade de forma independente', function(){
+        it('Testar a página de política de privacidade de forma independente', function(){
             cy.get('#firstName').type('Antonio')
             cy.get('#lastName').type('Mariano')
             cy.get('#email').type('lobinhomail@gmail.com')
@@ -187,7 +187,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         })
     })
     //invoke
-    it.only('exibe e esconde as mensagens de sucesso e erro usando o .invoke', () => {
+    it('exibe e esconde as mensagens de sucesso e erro usando o .invoke', () => {
         cy.get('.success')
           .should('not.be.visible')
           .invoke('show')
@@ -204,6 +204,12 @@ describe('Central de Atendimento ao Cliente TAT', function() {
           .should('not.be.visible')
       }) 
 
+      it.only('preencha a area de campo usando o comando .invoke', () => {
+        const longText = Cypress._.repeat('1,2,3,4,5,6,7,8,9,0,<br>', 10)
+        cy.get('#open-text-area').type(longText, {delay: 7})
+            .invoke('val', longText)
+            .should('have.value', longText)
+      }) 
 
 
   })
